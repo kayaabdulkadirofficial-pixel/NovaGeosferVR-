@@ -1,0 +1,327 @@
+/* ── Tokens ─────────────────────────────────────────────── */
+:root {
+  --bg:    #07131c;
+  --panel: rgba(12, 32, 44, 0.72);
+  --line:  rgba(164, 214, 196, 0.18);
+  --text:  #e8f4ee;
+  --muted: #9fb3ad;
+  --gold:  #e4c27a;
+  --teal:  #6fd3b0;
+  --ink:   #041018;
+  --radius-card: 18px;
+}
+
+/* ── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Instrument Sans", system-ui, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 500px at 80% -10%, rgba(111,211,176,.18), transparent 55%),
+    radial-gradient(900px  480px at -10% 20%, rgba(228,194,122,.10), transparent 50%),
+    var(--bg);
+}
+
+/* ── Ambient orbs ───────────────────────────────────────── */
+.orb {
+  position: fixed;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: .45;
+  pointer-events: none;
+}
+.orb-a { width:280px; height:280px; right:8%;  top:12%;    background: radial-gradient(circle,#6fd3b0,transparent 70%); }
+.orb-b { width:220px; height:220px; left:4%;   bottom:18%; background: radial-gradient(circle,#e4c27a,transparent 70%); }
+
+/* ── Typography ─────────────────────────────────────────── */
+a { color: inherit; }
+
+h1, h2, h3 {
+  font-family: Fraunces, Georgia, serif;
+  font-weight: 650;
+  line-height: 1.15;
+  margin-top: 0;
+}
+h1 { font-size: clamp(2rem, 5vw, 3.6rem); max-width: 16ch; }
+
+.eyebrow {
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-size: .78rem;
+  margin: 0 0 .6rem;
+}
+.lede { max-width: 62ch; color: var(--muted); font-size: 1.08rem; }
+.tag  { color: var(--gold); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; margin: 0; }
+
+/* ── Top bar ────────────────────────────────────────────── */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 6vw;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(16px);
+  background: rgba(7,19,28,.72);
+  border-bottom: 1px solid var(--line);
+  z-index: 5;
+}
+.brand { display:flex; gap:.75rem; align-items:center; text-decoration:none; }
+.brand-mark {
+  width:42px; height:42px;
+  border-radius:50%;
+  display:grid; place-items:center;
+  font-weight:700;
+  background: linear-gradient(145deg, var(--teal), #1b6b78);
+  color: var(--ink);
+  flex-shrink: 0;
+}
+.brand strong, .brand small { display:block; }
+.brand small { color:var(--muted); font-size:.78rem; }
+
+nav { display:flex; gap:1.1rem; }
+nav a { text-decoration:none; color:var(--muted); }
+nav a:hover { color:var(--gold); }
+
+/* ── Layout ─────────────────────────────────────────────── */
+.hero,
+.panel {
+  padding: 4.5rem 6vw;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* ── Hero ───────────────────────────────────────────────── */
+.hero-actions { display:flex; gap:.8rem; flex-wrap:wrap; margin:1.6rem 0 2.2rem; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  padding: .75rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: .95rem;
+}
+.btn.primary { background:var(--gold); color:var(--ink); border-color:transparent; font-weight:600; }
+.btn.ghost:hover { border-color:var(--teal); }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 140px));
+  gap: 1rem;
+  margin: 0;
+}
+.stats dt { font-family:Fraunces,serif; font-size:1.8rem; color:var(--teal); margin:0; }
+.stats dd { margin:0; color:var(--muted); }
+
+/* ── Section head ───────────────────────────────────────── */
+.section-head h2 { margin-bottom:.4rem; }
+.section-head p, .meta, .tip { color:var(--muted); }
+
+/* ── Filters & search ───────────────────────────────────── */
+.filters { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.4rem 0 1rem; }
+
+.chip {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: .45rem .85rem;
+  cursor: pointer;
+  font-size: .875rem;
+  transition: background .15s, border-color .15s;
+}
+.chip.active, .chip:hover { background:rgba(111,211,176,.16); border-color:var(--teal); }
+
+.search input {
+  width: 100%;
+  max-width: 420px;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: .75rem .9rem;
+  font-size: .95rem;
+  outline: none;
+}
+.search input:focus { border-color:var(--teal); }
+
+/* ── Grid ───────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.1rem;
+  margin-top: 1.4rem;
+  align-items: stretch;
+}
+
+/* ── Kart ───────────────────────────────────────────────── */
+.card {
+  /* reset button */
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+
+  /* layout */
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+
+  /* look */
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  color: inherit;
+  cursor: pointer;
+
+  /* transition */
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--teal);
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+}
+
+/* Görsel */
+.card-img {
+  width: 100%;
+  height: 160px;
+  flex-shrink: 0;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  background: rgba(111,211,176,.06);  /* yüklenmeden önce boş alan rengi */
+}
+
+/* Metin alanı */
+.card-body {
+  padding: .9rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.card-body h3 {
+  font-size: 1rem;
+  margin: .2rem 0 .4rem;
+  line-height: 1.3;
+}
+
+.card-duration {
+  margin: auto 0 0; padding-top: .25rem;
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+/* ── Rotalar ────────────────────────────────────────────── */
+.routes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.routes article {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 1.2rem;
+}
+.routes article h3 { margin-bottom: .4rem; }
+
+/* ── VR bölümü ──────────────────────────────────────────── */
+.vr {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 2rem 2rem 2.4rem;
+}
+.roadmap { padding-left:1.2rem; color:var(--muted); line-height:1.9; }
+
+/* ── Dialog / Modal ─────────────────────────────────────── */
+#detail {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #0c202c;
+  color: var(--text);
+  padding: 0;
+  max-width: 560px;
+  width: calc(100% - 2rem);
+}
+#detail::backdrop { background: rgba(2,8,12,.7); backdrop-filter: blur(4px); }
+#detail article   { padding: 1.4rem 1.5rem 1.8rem; }
+
+.close {
+  float: right;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+.close:hover { color: var(--text); }
+
+.tip {
+  margin-top: .6rem;
+  padding: .7rem .9rem;
+  border-radius: 10px;
+  background: rgba(111,211,176,.08);
+  border-left: 3px solid var(--teal);
+  font-size: .9rem;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+footer {
+  padding: 2rem 6vw 3rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  font-size: .9rem;
+}
+
+/* ── Yardımcı ───────────────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 700px) {
+  nav { display: none; }
+
+  .stats { grid-template-columns: repeat(3, 1fr); }
+
+  .grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+
+  .hero, .panel { padding: 3rem 5vw; }
+
+  #detail { width: calc(100% - 1.5rem); }
+}
+
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+

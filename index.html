@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nova Geosfer VR — Rekreasyon Rehberi</title>
+    <meta
+      name="description"
+      content="Nova Geosfer VR ile Türkiye'de doğa, kültür ve şehir rekreasyonunu keşfedin. Şimdilik web rehberi; yakında VR deneyimi."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,650&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="orb orb-a" aria-hidden="true"></div>
+    <div class="orb orb-b" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#anasayfa">
+        <span class="brand-mark">NG</span>
+        <span>
+          <strong>Nova Geosfer VR</strong>
+          <small>Rekreasyon Rehberi</small>
+        </span>
+      </a>
+      <nav>
+        <a href="#kesfet">Keşfet</a>
+        <a href="#rotalar">Rotalar</a>
+        <a href="#vr">VR</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ── Hero ─────────────────────────────────── -->
+      <section id="anasayfa" class="hero">
+        <p class="eyebrow">Dünya bir küre. Rekreasyon bir yolculuk.</p>
+        <h1>Nerede nefes alacağını, nasıl dinleneceğini ve nereye bakacağını gösteren rehber.</h1>
+        <p class="lede">
+          Nova Geosfer VR, park, doğa yürüyüşü, kültür ve şehir molalarını tek
+          bir haritada toplar. Bu sürüm klasik web rehberidir; sanal gerçeklik
+          katmanı sonraki adımda gelecek.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#kesfet">Aktivite keşfet</a>
+          <a class="btn ghost" href="#vr">VR yol haritası</a>
+        </div>
+        <dl class="stats">
+          <div>
+            <dt>22</dt>
+            <dd>rota</dd>
+          </div>
+          <div>
+            <dt>10</dt>
+            <dd>şehir</dd>
+          </div>
+          <div>
+            <dt>6</dt>
+            <dd>kategori</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- ── Keşfet ─────────────────────────────────── -->
+      <section id="kesfet" class="panel">
+        <div class="section-head">
+          <h2>Keşfet</h2>
+          <p>Süre, şehir veya türe göre süz. Kartlara tıklayınca ayrıntı açılır.</p>
+        </div>
+        <div class="filters" role="toolbar" aria-label="Aktivite filtreleri">
+          <button class="chip active" data-filter="all">Tümü</button>
+          <button class="chip" data-filter="doga">Doğa</button>
+          <button class="chip" data-filter="sehir">Şehir</button>
+          <button class="chip" data-filter="kultur">Kültür</button>
+          <button class="chip" data-filter="su">Su</button>
+          <button class="chip" data-filter="spor">Hareket</button>
+          <button class="chip" data-filter="aile">Aile</button>
+        </div>
+        <label class="search">
+          <span class="sr-only">Ara</span>
+          <input id="search" type="search" placeholder="Park, müze, yürüyüş, şehir…" />
+        </label>
+        <div id="grid" class="grid"></div>
+      </section>
+
+      <!-- ── Rotalar ────────────────────────────────── -->
+      <section id="rotalar" class="panel">
+        <div class="section-head">
+          <h2>Günün üç rotası</h2>
+          <p>Kısa moladan tam güne uzanan hazır paketler.</p>
+        </div>
+        <div class="routes">
+          <article>
+            <h3>90 dakika — şehir nefesi</h3>
+            <p>Sahil yürüyüşü, bir kahve molası, küçük bir bakı terası.</p>
+          </article>
+          <article>
+            <h3>Yarım gün — yeşil halka</h3>
+            <p>Park, kısa patika ve piknik. Aile ve arkadaş grupları için.</p>
+          </article>
+          <article>
+            <h3>Tam gün — kültür + doğa</h3>
+            <p>Müze veya ören yeri sabahı, öğleden sonra açık hava.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ── VR ─────────────────────────────────────── -->
+      <section id="vr" class="panel">
+        <div class="vr">
+          <div class="section-head">
+            <h2>VR yakında</h2>
+            <p>
+              Web rehberi temelidir. Sonraki katmanda 360° bakışlar, sanal saha
+              gezileri ve kulaklıkla gezilebilir geosfer deneyimi planlanıyor.
+            </p>
+          </div>
+          <ul class="roadmap">
+            <li><strong>Şimdi:</strong> web katalog, filtre, rota önerileri</li>
+            <li><strong>Sonra:</strong> harita ve 360° görseller</li>
+            <li><strong>VR:</strong> sahnede yürüyüş ve mekân turu</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- ── Modal ──────────────────────────────────── -->
+    <dialog id="detail">
+      <article>
+        <button class="close" type="button" aria-label="Kapat">×</button>
+        <p class="tag" id="d-tag"></p>
+        <h2 id="d-title"></h2>
+        <p id="d-meta" class="meta"></p>
+        <p id="d-body"></p>
+        <p id="d-tip" class="tip"></p>
+      </article>
+    </dialog>
+
+    <footer>
+      <p>Nova Geosfer VR · Rekreasyon rehberi · 2026</p><p><a href="image-credits.html">Fotoğraf kaynakları ve lisanslar</a></p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
+
