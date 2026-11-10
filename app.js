@@ -6,6 +6,11 @@ const chips = document.querySelectorAll(".chip");
 let filter = "all";
 const categoryIcons = { doga: "🌿", sehir: "🏙️", kultur: "🏛️", su: "🌊", spor: "🚴", aile: "👨‍👩‍👧" };
 
+const routeCount = document.getElementById("route-count");
+const cityCount = document.getElementById("city-count");
+if (routeCount) routeCount.textContent = window.ACTIVITIES.length;
+if (cityCount) cityCount.textContent = new Set(window.ACTIVITIES.map((item) => item.city)).size;
+
 function mapsSearchUrl(item) {
   const query = encodeURIComponent(`${item.title}, ${item.city}, Türkiye`);
   return `https://www.google.com/maps/search/?api=1&query=${query}`;
