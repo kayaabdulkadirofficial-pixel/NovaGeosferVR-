@@ -325,3 +325,46 @@ footer {
 }
 
 
+
+/* Expanded category icons and staged VR roadmap */
+.chip span{margin-right:.25rem}.activity-icon{display:inline-grid;place-items:center;width:1.35rem;margin-right:.2rem;font-size:1rem}
+.roadmap-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;padding:0;list-style:none}
+.roadmap-steps li{display:flex;gap:.8rem;align-items:flex-start;padding:1rem;border:1px solid var(--line);border-radius:var(--radius-card);background:var(--panel)}
+.roadmap-icon{font-size:1.5rem;line-height:1}.roadmap-steps strong{color:var(--gold)}.roadmap-steps p{color:var(--muted);margin:.35rem 0 0;font-size:.92rem}
+
+
+/* Video-like destination photo tour (non-VR preview) */
+.visual-tour-panel { max-width: 1320px; }
+.visual-tour { overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: var(--panel); }
+.tour-scene { position: relative; min-height: clamp(360px, 52vw, 620px); overflow: hidden; background: #10232b; isolation: isolate; }
+.tour-scene img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.08); }
+.tour-scene.is-moving img { animation: tour-drift 8s ease-in-out both; }
+@keyframes tour-drift { from { transform:scale(1.08) translate3d(1.2%,0,0); } to { transform:scale(1.2) translate3d(-1.2%,-1%,0); } }
+.tour-shade { position:absolute; inset:0; z-index:1; background:linear-gradient(90deg,rgba(2,10,14,.76),rgba(2,10,14,.28) 62%,rgba(2,10,14,.08)),linear-gradient(0deg,rgba(2,10,14,.42),transparent 52%); }
+.tour-caption { position:absolute; z-index:2; left:clamp(1.2rem,5vw,4rem); bottom:clamp(1.4rem,5vw,3.5rem); max-width:620px; }
+.tour-caption h3 { font-size:clamp(2rem,5vw,3.8rem); margin:.45rem 0; }
+.tour-caption p:last-child { color:#e4eeea; font-size:1rem; line-height:1.55; }
+.tour-counter { position:absolute; z-index:2; right:1.2rem; top:1.2rem; padding:.45rem .7rem; border-radius:999px; background:rgba(2,10,14,.65); color:var(--text); font-variant-numeric:tabular-nums; }
+.tour-controls { display:flex; justify-content:center; gap:.7rem; padding:1rem; }
+.tour-button { border:1px solid var(--line); border-radius:999px; padding:.7rem 1rem; color:var(--text); background:rgba(111,211,176,.08); cursor:pointer; }
+.tour-button:hover,.tour-stop:hover,.tour-stop.active { border-color:var(--teal); background:rgba(111,211,176,.16); }
+.tour-stops { display:flex; gap:.55rem; overflow-x:auto; padding:0 1rem 1rem; scrollbar-color:var(--teal) transparent; }
+.tour-stop { flex:0 0 auto; display:flex; align-items:center; gap:.4rem; padding:.55rem .75rem; border:1px solid var(--line); border-radius:999px; color:var(--muted); background:transparent; cursor:pointer; white-space:nowrap; }
+.tour-stop[aria-current="true"] { color:var(--text); }
+.tour-note { margin:0; padding:0 1rem 1rem; color:var(--muted); font-size:.82rem; text-align:center; }
+@media (prefers-reduced-motion: reduce) { .tour-scene.is-moving img { animation:none; } }
+
+/* Atlas details and visual stop selector */
+.tour-meta { display:flex; flex-wrap:wrap; gap:.5rem; margin:.85rem 0; }
+.tour-meta span { padding:.35rem .65rem; border:1px solid rgba(232,244,238,.32); border-radius:999px; background:rgba(2,10,14,.4); color:#fff; font-size:.86rem; }
+.tour-tip { max-width:60ch; padding:.65rem .8rem; border-left:3px solid var(--gold); background:rgba(2,10,14,.4); color:#fff; font-size:.9rem; }
+.tour-stops { padding:.2rem 1rem 1rem; }
+.tour-stop { flex-direction:column; align-items:stretch; gap:.4rem; width:156px; padding:.4rem; border-radius:14px; text-align:left; }
+.tour-stop img { width:100%; height:78px; object-fit:cover; border-radius:10px; }
+.tour-stop span { color:var(--text); font-weight:600; padding:.1rem .3rem .2rem; }
+.tour-stop small { display:block; margin-top:.15rem; color:var(--muted); font-size:.72rem; font-weight:400; }
+.tour-note { max-width:90ch; margin:auto; line-height:1.55; }
+
+.map-link { text-decoration:none; display:inline-flex; align-items:center; justify-content:center; }
+.tour-controls .map-link { background:var(--gold); color:var(--ink); border-color:transparent; font-weight:600; }
+.tour-controls { flex-wrap:wrap; }

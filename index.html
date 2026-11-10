@@ -30,6 +30,7 @@
       </a>
       <nav>
         <a href="#kesfet">Keşfet</a>
+        <a href="#gorsel-tur">Görsel tur</a>
         <a href="#rotalar">Rotalar</a>
         <a href="#vr">VR</a>
       </nav>
@@ -51,11 +52,11 @@
         </div>
         <dl class="stats">
           <div>
-            <dt>22</dt>
+            <dt id="route-count">44</dt>
             <dd>rota</dd>
           </div>
           <div>
-            <dt>10</dt>
+            <dt id="city-count">25</dt>
             <dd>şehir</dd>
           </div>
           <div>
@@ -65,6 +66,36 @@
         </dl>
       </section>
 
+      <section id="gorsel-tur" class="panel visual-tour-panel">
+        <div class="section-head">
+          <p class="eyebrow">Gözlüksüz önizleme</p>
+          <h2>Türkiye destinasyon atlası</h2>
+          <p>Görseller arasında ilerle, şehir durağını seç, rota bilgilerini incele ve Google Haritalar’da konuma geç.</p>
+        </div>
+        <div class="visual-tour" aria-label="Destinasyon görsel önizlemesi">
+          <div class="tour-scene" id="tour-scene">
+            <img id="tour-image" src="" alt="" />
+            <div class="tour-shade" aria-hidden="true"></div>
+            <div class="tour-caption" aria-live="polite">
+              <p class="tag" id="tour-location"></p>
+              <h3 id="tour-title"></h3>
+              <div class="tour-meta"><span id="tour-duration"></span><span id="tour-category"></span></div>
+              <p id="tour-description"></p>
+              <p class="tour-tip" id="tour-tip"></p>
+            </div>
+            <span class="tour-counter" id="tour-counter"></span>
+          </div>
+          <div class="tour-controls">
+            <button class="tour-button" id="tour-prev" type="button" aria-label="Önceki destinasyon">←</button>
+            <button class="tour-button tour-play" id="tour-toggle" type="button" aria-pressed="true">⏸ Duraklat</button>
+            <button class="tour-button" id="tour-next" type="button" aria-label="Sonraki destinasyon">Sonraki →</button>
+            <a class="tour-button map-link" id="tour-map-link" href="#" target="_blank" rel="noopener noreferrer">📍 Google Haritalar’da aç</a>
+          </div>
+          <div class="tour-stops" id="tour-stops" aria-label="Destinasyon seç"></div>
+          <p class="tour-note"><strong>Şu an:</strong> gözlük gerekmez; görseller hareket efekti verir ve Google Haritalar bağlantısı konumu açar. <strong>Henüz:</strong> sayfa içine gömülü harita veya gerçek 360° panorama yok. Sonraki aşamada harita ve kapsama bulunan yerlerde Street View eklenebilir.</p>
+        </div>
+      </section>
+
       <!-- ── Keşfet ─────────────────────────────────── -->
       <section id="kesfet" class="panel">
         <div class="section-head">
@@ -72,13 +103,13 @@
           <p>Süre, şehir veya türe göre süz. Kartlara tıklayınca ayrıntı açılır.</p>
         </div>
         <div class="filters" role="toolbar" aria-label="Aktivite filtreleri">
-          <button class="chip active" data-filter="all">Tümü</button>
-          <button class="chip" data-filter="doga">Doğa</button>
-          <button class="chip" data-filter="sehir">Şehir</button>
-          <button class="chip" data-filter="kultur">Kültür</button>
-          <button class="chip" data-filter="su">Su</button>
-          <button class="chip" data-filter="spor">Hareket</button>
-          <button class="chip" data-filter="aile">Aile</button>
+          <button class="chip active" data-filter="all"><span aria-hidden="true">✦</span> Tümü</button>
+          <button class="chip" data-filter="doga"><span aria-hidden="true">🌿</span> Doğa</button>
+          <button class="chip" data-filter="sehir"><span aria-hidden="true">🏙️</span> Şehir</button>
+          <button class="chip" data-filter="kultur"><span aria-hidden="true">🏛️</span> Kültür</button>
+          <button class="chip" data-filter="su"><span aria-hidden="true">🌊</span> Su</button>
+          <button class="chip" data-filter="spor"><span aria-hidden="true">🚴</span> Hareket</button>
+          <button class="chip" data-filter="aile"><span aria-hidden="true">👨‍👩‍👧</span> Aile</button>
         </div>
         <label class="search">
           <span class="sr-only">Ara</span>
@@ -113,17 +144,16 @@
       <section id="vr" class="panel">
         <div class="vr">
           <div class="section-head">
-            <h2>VR yakında</h2>
-            <p>
-              Web rehberi temelidir. Sonraki katmanda 360° bakışlar, sanal saha
-              gezileri ve kulaklıkla gezilebilir geosfer deneyimi planlanıyor.
-            </p>
+            <h2>VR yol haritası</h2>
+            <p>Rota içeriğinden başlayıp 360° ve etkileşimli VR adımlarına pilotlarla ilerle.</p>
           </div>
-          <ul class="roadmap">
-            <li><strong>Şimdi:</strong> web katalog, filtre, rota önerileri</li>
-            <li><strong>Sonra:</strong> harita ve 360° görseller</li>
-            <li><strong>VR:</strong> sahnede yürüyüş ve mekân turu</li>
-          </ul>
+          <ol class="roadmap roadmap-steps">
+            <li><span class="roadmap-icon" aria-hidden="true">🗺️</span><div><strong>1. İçerik temeli</strong><p>Destinasyon, etkinlik, erişilebilirlik ve kaynak verisini standartlaştır.</p></div></li>
+            <li><span class="roadmap-icon" aria-hidden="true">📱</span><div><strong>2. Web önizlemesi</strong><p>Seçili rotalara mobil uyumlu 360° fotoğraflar ve sahne noktaları ekle.</p></div></li>
+            <li><span class="roadmap-icon" aria-hidden="true">🧭</span><div><strong>3. Etkileşimli pilot</strong><p>Az sayıda rotada bilgi etiketleri ve sahneler arası geçişi dene.</p></div></li>
+            <li><span class="roadmap-icon" aria-hidden="true">🥽</span><div><strong>4. Cihaz ve konfor uyumu</strong><p>Performans, okunabilirlik, hareket konforu ve erişilebilirliği ölç.</p></div></li>
+            <li><span class="roadmap-icon" aria-hidden="true">📈</span><div><strong>5. Ölçerek genişlet</strong><p>Yüklenme, görev tamamlama ve geri bildirime göre kapsamı büyüt.</p></div></li>
+          </ol>
         </div>
       </section>
     </main>
@@ -137,6 +167,7 @@
         <p id="d-meta" class="meta"></p>
         <p id="d-body"></p>
         <p id="d-tip" class="tip"></p>
+        <a id="d-map-link" class="btn ghost map-link" href="#" target="_blank" rel="noopener noreferrer">📍 Google Haritalar’da aç</a>
       </article>
     </dialog>
 
